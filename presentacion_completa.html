@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirigiendo…</title>
+<meta http-equiv="refresh" content="0; url=./index.html">
+<style>
+  :root {
+    --black: #0D0D0D;
+    --gold: #C9A84C;
+    --beige: #F5EDD6;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; display:grid; place-items:center;
+    background:radial-gradient(circle at top, #1b1607 0%, var(--black) 55%);
+    color:var(--beige); font-family:'Montserrat',sans-serif;
+  }
+  main {
+    width:min(560px, calc(100vw - 32px)); padding:32px;
+    border:1px solid rgba(201,168,76,.35); border-radius:18px;
+    background:rgba(0,0,0,.45); text-align:center;
+  }
+  h1 { margin:0 0 12px; color:var(--gold); font-size:clamp(26px, 5vw, 42px); text-transform:uppercase; }
+  p { margin:0 0 16px; line-height:1.6; }
+  a {
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:12px 18px; border-radius:999px; border:1px solid var(--gold);
+    color:var(--gold); text-decoration:none; font-weight:700;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Redirigiendo</h1>
+  <p>La presentación ahora se publica desde <strong><a href="./index.html">index.html</a></strong> para GitHub Pages.</p>
+  <p>Si no abre automáticamente, usa el botón de arriba.</p>
+</main>
+<script>
+  const target = new URL('./index.html', window.location.href);
+  target.hash = window.location.hash;
+  window.location.replace(target);
+</script>
+</body>
+</html>
