@@ -296,6 +296,15 @@ table.ftable td:first-child { color:var(--gold); font-weight:700; }
 #s5 .step-card { margin-bottom:0; flex:1; align-items:center; padding:6px 12px; border-radius:8px; background:rgba(201,168,76,.04); }
 #s5 .sidebar { width:clamp(220px,26vw,270px); background:var(--beige); padding:5% 4%; display:flex; flex-direction:column; justify-content:center; gap:12px; }
 #s5 .sidebar h3 { font-size:clamp(11px,1.2vw,14px); font-weight:800; color:var(--black); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+#s5 .sidebar .link-btn {
+  justify-content:flex-start;
+  gap:8px;
+  padding:10px 12px;
+  white-space:nowrap;
+  font-size:clamp(10px,1vw,13px);
+}
+#s5 .sidebar .link-btn .link-icon { flex:0 0 auto; }
+#s5 .sidebar .link-btn .link-label { min-width:0; white-space:nowrap; }
 
 /* ──────────────────────────────────────
    SLIDE 6 — CUENTA USCIS + FORMULARIOS
@@ -625,10 +634,10 @@ table.ftable td:first-child { color:var(--gold); font-weight:700; }
   </div>
   <div class="sidebar">
     <h3>ENLACES OFICIALES</h3>
-    <a class="link-btn" href="https://www.uscis.gov" target="_blank">🌐 USCIS.GOV</a>
-    <a class="link-btn" href="https://www.uscis.gov/forms/all-forms" target="_blank">📄 FORMULARIOS</a>
-    <a class="link-btn" href="https://i94.cbp.dhs.gov/home" target="_blank">🛂 PORTAL I-94</a>
-    <a class="link-btn" href="https://acis.eoir.justice.gov/en" target="_blank">⚖️ CORTE (EOIR)</a>
+    <a class="link-btn" href="https://www.uscis.gov" target="_blank"><span class="link-icon" aria-hidden="true">🌐</span><span class="link-label">USCIS.GOV</span></a>
+    <a class="link-btn" href="https://www.uscis.gov/forms/all-forms" target="_blank"><span class="link-icon" aria-hidden="true">📄</span><span class="link-label">FORMULARIOS</span></a>
+    <a class="link-btn" href="https://i94.cbp.dhs.gov/home" target="_blank"><span class="link-icon" aria-hidden="true">🛂</span><span class="link-label">PORTAL I-94</span></a>
+    <a class="link-btn" href="https://acis.eoir.justice.gov/en" target="_blank"><span class="link-icon" aria-hidden="true">⚖️</span><span class="link-label">CORTE (EOIR)</span></a>
   </div>
 </div>
 
