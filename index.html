@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Presentación interactiva del Curso de Inmigración de TSG Services Academy en Houston, Texas. Curso presencial en español con 17 diapositivas.">
+<meta name="description" content="TSG Services Academy — Curso de Inmigración en Houston, Texas. Dos clases presenciales en español con Tatiana Serrate. Julio 11 y 12.">
 <meta name="theme-color" content="#0D0D0D">
 <meta property="og:title" content="TSG Services Academy — Curso de Inmigración">
-<meta property="og:description" content="Curso presencial de inmigración en español con Tatiana Serrate en Houston, Texas.">
+<meta property="og:description" content="Curso presencial de inmigración en español con Tatiana Serrate en Houston, Texas. Julio 11 y 12.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_US">
 <meta property="og:image" content="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(5).jpeg">
@@ -27,1215 +27,247 @@
   --beige-dk: #E0D3B0;
   --white: #FFFFFF;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
-html, body { width:100%; height:100%; overflow:hidden; background:#0a0a0a; font-family:'Montserrat',sans-serif; color-scheme:dark; }
-
-/* ── DECK ── */
-.deck { width:100vw; height:100vh; position:relative; }
-.slide { position:absolute; inset:0; display:none; overflow:hidden; }
-.slide.active { display:flex; }
-.slide:focus { outline:none; }
-
-/* ── NAV ── */
-.nav {
-  position:fixed; bottom:18px; left:50%; transform:translateX(-50%);
-  display:flex; align-items:center; gap:14px; z-index:999;
-  background:rgba(13,13,13,.88); backdrop-filter:blur(8px);
-  padding:8px 22px; border-radius:50px;
-  border:1px solid rgba(201,168,76,.4);
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body {
+  min-height:100vh;
+  background: #0a0a0a;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(201,168,76,.13), transparent),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(201,168,76,.07), transparent);
+  font-family:'Montserrat', sans-serif;
+  color: var(--beige);
+  color-scheme: dark;
 }
-.nav button {
-  background:transparent; border:1.5px solid var(--gold); color:var(--gold);
-  width:34px; height:34px; border-radius:50%; font-size:16px; cursor:pointer;
-  display:flex; align-items:center; justify-content:center; transition:.2s;
+
+/* ── HEADER ── */
+header {
+  padding: 48px 24px 0;
+  text-align: center;
 }
-.nav button:hover { background:var(--gold); color:var(--black); }
-.nav .ctr { color:var(--beige); font-size:12px; font-weight:700; letter-spacing:1px; min-width:55px; text-align:center; }
-
-/* ── SHARED ── */
-.tag { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
-.gold-bar { width:56px; height:4px; background:var(--gold); margin:12px 0 20px; }
-.gold { color:var(--gold); }
-.beige { color:var(--beige); }
-
-.info-box {
-  border:1.5px solid var(--gold); border-radius:8px; padding:10px 16px;
+.academy-tag {
+  display: inline-block;
+  font-size: 11px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--gold);
+  border:1px solid rgba(201,168,76,.35);
+  padding:5px 14px; border-radius:999px;
+  margin-bottom:20px;
 }
-.info-box .lbl { font-size:11px; font-weight:700; letter-spacing:2px; color:var(--gold); text-transform:uppercase; margin-bottom:2px; }
-.info-box .val { font-size:clamp(13px,1.8vw,20px); font-weight:800; color:var(--white); }
+header h1 {
+  font-size: clamp(32px, 7vw, 72px);
+  font-weight:900; text-transform:uppercase;
+  line-height:.92; color:var(--white);
+  margin-bottom:10px;
+}
+header h1 span { color:var(--gold); }
+header .subtitle {
+  font-size:clamp(13px,1.6vw,17px);
+  color:var(--beige); font-style:italic;
+  max-width:520px; margin:0 auto 28px;
+  line-height:1.6;
+}
+.gold-bar {
+  width:56px; height:4px; background:var(--gold);
+  margin:0 auto 32px; border-radius:2px;
+}
 
-.check-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }
-.check-row .dot { width:20px; height:20px; background:var(--gold); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--black); font-size:11px; font-weight:900; margin-top:1px; }
-.check-row .txt { font-size:clamp(11px,1.3vw,15px); color:var(--beige); font-weight:500; line-height:1.45; }
-
-.num-row { display:flex; align-items:flex-start; gap:14px; margin-bottom:16px; }
-.num-row .num { width:32px; height:32px; background:var(--gold); border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--black); font-size:15px; font-weight:900; }
-.num-row h4 { font-size:clamp(12px,1.35vw,15px); font-weight:700; color:var(--gold); text-transform:uppercase; margin-bottom:3px; }
-.num-row p { font-size:clamp(11px,1.15vw,14px); color:var(--beige); line-height:1.45; }
-
-.panel { background:rgba(201,168,76,.06); border:1.5px solid rgba(201,168,76,.3); border-radius:12px; padding:22px; display:flex; flex-direction:column; }
-.panel h3 { font-size:clamp(13px,1.45vw,17px); font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:.5px; margin-bottom:10px; }
-.panel p { font-size:clamp(11px,1.15vw,14px); color:var(--beige); line-height:1.65; flex:1; }
-
-.form-card { border:1.5px solid rgba(201,168,76,.3); border-radius:10px; padding:16px; background:rgba(201,168,76,.05); }
-.form-card .fid { display:inline-block; background:var(--gold); color:var(--black); font-weight:900; font-size:clamp(12px,1.4vw,16px); padding:3px 10px; border-radius:4px; margin-bottom:8px; }
-.form-card h4 { font-size:clamp(11px,1.12vw,14px); color:var(--white); font-weight:700; text-transform:uppercase; margin-bottom:6px; }
-.form-card p { font-size:clamp(11px,1.05vw,14px); color:var(--beige); line-height:1.58; }
-
-table.ftable { width:100%; border-collapse:collapse; font-size:clamp(11px,1.2vw,14px); }
-table.ftable th { background:var(--gold); color:var(--black); font-weight:700; text-transform:uppercase; letter-spacing:.5px; padding:8px 12px; text-align:left; }
-table.ftable td { padding:7px 12px; color:var(--beige); border-bottom:1px solid rgba(201,168,76,.12); font-weight:500; }
-table.ftable tr:nth-child(even) td { background:rgba(201,168,76,.05); }
-table.ftable td:first-child { color:var(--gold); font-weight:700; }
-
-.link-btn {
+/* ── META INFO ── */
+.meta-strip {
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:10px; max-width:700px; margin:0 auto 48px; padding:0 16px;
+}
+.meta-chip {
   display:flex; align-items:center; gap:8px;
-  background:var(--black); padding:10px 14px; border-radius:6px;
-  text-decoration:none; font-size:clamp(11px,1.1vw,14px); font-weight:700;
-  color:var(--gold); border:1px solid var(--gold); white-space:normal; line-height:1.35;
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.3);
+  border-radius:999px; padding:8px 18px;
+  font-size:clamp(12px,1.3vw,14px); font-weight:600; color:var(--beige);
 }
-.link-btn:focus-visible,
-.nav button:focus-visible {
-  outline:2px solid var(--beige);
-  outline-offset:2px;
-}
-.link-list { display:flex; flex-direction:column; gap:10px; }
-.actions { display:flex; gap:12px; flex-wrap:wrap; }
-.actions .link-btn { flex:1 1 280px; min-width:0; }
-.preview-trigger {
-  appearance:none; border:none; background:transparent; padding:0; margin:0;
-  cursor:zoom-in; font:inherit; color:inherit;
-}
+.meta-chip .icon { font-size:16px; }
 
-/* ──────────────────────────────────────
-   SLIDE 1 — PORTADA
-────────────────────────────────────── */
-#s1 { flex-direction:row; background:var(--black); }
-#s1 .left { flex:1; display:flex; flex-direction:column; justify-content:center; padding:5% 6%; }
-#s1 .right {
-  width:40%; background:linear-gradient(140deg,#1c1500,#0d0d0d);
-  display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
-}
-#s1 .right::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 60% 50%,rgba(201,168,76,.15),transparent 70%); }
-#s1 .hero-flyer {
-  width:86%; max-height:calc(100% - 64px); display:block;
-  border-radius:14px; box-shadow:0 0 60px rgba(201,168,76,0.2);
-  position:relative; z-index:1; object-fit:contain;
-}
-#s1 .flyer-inner {
-  position:relative; z-index:1; margin:32px;
-  border:1px solid rgba(201,168,76,.35); border-radius:14px;
-  padding:28px 24px; background:rgba(0,0,0,.5); text-align:center; width:calc(100% - 64px);
-}
-#s1 h1 { font-size:clamp(32px,5.5vw,72px); font-weight:900; text-transform:uppercase; color:var(--gold); line-height:.9; margin-bottom:6px; }
-#s1 .subtitle { font-size:clamp(11px,1.3vw,15px); color:var(--beige); font-style:italic; margin-bottom:28px; }
-#s1 .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
-#s1 .inst-box { border:1.5px solid var(--gold); border-radius:8px; padding:12px 16px; margin-bottom:14px; }
-#s1 .inst-box .il { font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gold); text-transform:uppercase; font-style:italic; }
-#s1 .inst-box .in { font-size:clamp(14px,1.8vw,22px); font-weight:800; color:var(--white); }
-#s1 .addr { display:flex; align-items:center; gap:10px; font-size:clamp(10px,1.1vw,13px); color:var(--beige); }
-#s1 .addr .pin { width:24px; height:24px; background:var(--gold); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--black); }
-
-/* ──────────────────────────────────────
-   SLIDE 1B — PROMO FLYERS
-────────────────────────────────────── */
-#spromo { background:var(--black); }
-#spromo .promo-wrap { display:flex; flex-direction:column; height:100%; padding:3% 5%; }
-#spromo .promo-stack { flex:1; min-height:0; display:flex; flex-direction:column; gap:10px; overflow:hidden; padding-bottom:74px; }
-#spromo .promo-row { flex:1; min-height:0; display:grid; gap:10px; }
-#spromo .promo-row.top { grid-template-columns:repeat(4,minmax(0,1fr)); }
-#spromo .promo-row.bottom { grid-template-columns:repeat(3,minmax(0,1fr)); width:min(76%,100%); align-self:center; }
-#spromo .promo-card {
-  min-width:0; min-height:0; display:flex; align-items:center; justify-content:center;
-  background:#111; border-radius:10px; overflow:hidden;
-  border:1px solid rgba(201,168,76,.3); box-shadow:0 4px 20px rgba(0,0,0,.4);
-}
-#spromo .promo-card.preview-trigger {
-  position:relative; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
-}
-#spromo .promo-card.preview-trigger:hover,
-#spromo .promo-card.preview-trigger:focus-visible {
-  transform:translateY(-3px);
-  border-color:rgba(232,196,106,.75);
-  box-shadow:0 10px 28px rgba(0,0,0,.45);
-}
-#spromo .promo-card.preview-trigger::after {
-  content:'Ampliar';
-  position:absolute; right:10px; bottom:10px;
-  padding:6px 10px; border-radius:999px;
-  background:rgba(13,13,13,.84); border:1px solid rgba(201,168,76,.45);
-  color:var(--beige); font-size:10px; font-weight:700; letter-spacing:1px;
-  text-transform:uppercase; opacity:0; transform:translateY(6px); transition:.2s ease;
-}
-#spromo .promo-card.preview-trigger:hover::after,
-#spromo .promo-card.preview-trigger:focus-visible::after {
-  opacity:1; transform:translateY(0);
-}
-#spromo .promo-card img {
-  width:100%; height:100%; display:block; padding:4px;
-  object-fit:contain; object-position:center top; background:#111;
-}
-
-/* ──────────────────────────────────────
-   PREVIEW MODAL
-────────────────────────────────────── */
-.lightbox[hidden] { display:none !important; }
-.lightbox {
-  position:fixed; inset:0; z-index:1200;
+/* ── INSTRUCTOR ── */
+.instructor-strip {
   display:flex; align-items:center; justify-content:center;
-  padding:24px; background:rgba(0,0,0,.9); backdrop-filter:blur(10px);
+  gap:12px; margin-bottom:52px;
+  flex-wrap:wrap;
 }
-.lightbox-backdrop { position:absolute; inset:0; }
-.lightbox-panel {
-  position:relative; z-index:1;
-  width:min(92vw, 1120px); max-height:calc(100vh - 48px);
-  display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:18px;
+.instructor-strip .line { width:60px; height:1px; background:rgba(201,168,76,.35); }
+.instructor-strip .label {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold); font-style:italic;
 }
-.lightbox-stage {
-  min-width:0;
-  padding:20px; border-radius:22px;
-  background:linear-gradient(180deg, rgba(27,22,7,.96), rgba(13,13,13,.96));
-  border:1px solid rgba(201,168,76,.26);
-  box-shadow:0 18px 50px rgba(0,0,0,.42);
-}
-.lightbox-figure {
-  display:flex; flex-direction:column; align-items:center; gap:14px;
-}
-.lightbox-image {
-  display:block; width:auto; max-width:100%;
-  max-height:min(76vh, 1200px); border-radius:16px; object-fit:contain;
-  background:#0d0d0d;
-}
-.lightbox-meta {
-  width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px;
-  color:var(--beige);
-}
-.lightbox-meta strong {
-  display:block; font-size:clamp(14px, 1.4vw, 18px); color:var(--gold); text-transform:uppercase;
-}
-.lightbox-meta span {
-  display:block; margin-top:2px; font-size:12px; letter-spacing:1px; text-transform:uppercase;
-}
-.lightbox-count {
-  flex-shrink:0; padding:8px 12px; border-radius:999px;
-  border:1px solid rgba(201,168,76,.35); background:rgba(0,0,0,.35);
-  font-size:12px; font-weight:700; color:var(--beige);
-}
-.lightbox-close,
-.lightbox-nav {
-  width:48px; height:48px; border-radius:50%;
-  border:1px solid rgba(201,168,76,.45); background:rgba(13,13,13,.85);
-  color:var(--gold); cursor:pointer; font-size:20px; transition:.2s;
-}
-.lightbox-close:hover,
-.lightbox-nav:hover,
-.lightbox-close:focus-visible,
-.lightbox-nav:focus-visible {
-  background:var(--gold); color:var(--black); outline:none;
-}
-.lightbox-close {
-  position:absolute; top:14px; right:14px; z-index:2;
-}
-@media (max-width:900px) {
-  .lightbox { padding:16px; }
-  .lightbox-panel { grid-template-columns:1fr; gap:12px; }
-  .lightbox-stage { padding:16px 16px 18px; }
-  .lightbox-nav-row {
-    display:flex; align-items:center; justify-content:center; gap:12px;
-  }
-  .lightbox-nav.desktop { display:none; }
-  .lightbox-image { max-height:62vh; }
-  .lightbox-meta { flex-direction:column; align-items:flex-start; }
-}
-@media (min-width:901px) {
-  .lightbox-nav-row { display:none; }
+.instructor-strip .name {
+  font-size:clamp(16px,2vw,22px); font-weight:800;
+  color:var(--white); text-transform:uppercase;
+  letter-spacing:.5px;
 }
 
-/* ──────────────────────────────────────
-   SLIDE 2 — SOBRE TSG
-────────────────────────────────────── */
-#s2 { flex-direction:row; background:var(--black); }
-#s2 .left { flex:1; display:flex; flex-direction:column; justify-content:center; padding:5% 6%; }
-#s2 .left h2 { font-size:clamp(22px,4vw,50px); font-weight:900; text-transform:uppercase; line-height:1; color:var(--white); }
-#s2 .right { width:44%; background:var(--beige); padding:5% 5%; display:flex; flex-direction:column; justify-content:center; position:relative; }
-#s2 .right::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:var(--gold); }
-#s2 .bio { font-size:clamp(13px,1.5vw,18px); color:var(--black); line-height:1.75; border-left:4px solid var(--gold); padding-left:20px; margin-bottom:30px; }
-#s2 .inst-tag { text-align:center; border-top:2px solid var(--gold-dk); padding-top:20px; }
-#s2 .inst-tag .itl { font-size:10px; font-weight:700; letter-spacing:2px; color:#5B4314; text-transform:uppercase; font-style:italic; margin-bottom:4px; }
-#s2 .inst-tag .itn { font-size:clamp(16px,2.4vw,26px); font-weight:900; color:var(--black); text-transform:uppercase; }
-
-/* ──────────────────────────────────────
-   SLIDE 3 — APRENDERÁS
-────────────────────────────────────── */
-#s3 { flex-direction:column; background:var(--black); padding:4% 6%; }
-#s3 .audience {
-  display:flex; align-items:center; gap:12px;
-  background:rgba(201,168,76,.1); border:1.5px solid var(--gold);
-  border-radius:8px; padding:12px 18px; margin-bottom:22px;
+/* ── CLASS CARDS ── */
+main {
+  max-width:980px; margin:0 auto; padding:0 20px 80px;
+  display:grid; grid-template-columns:1fr 1fr; gap:24px;
 }
-#s3 .audience p { font-size:clamp(11px,1.3vw,15px); color:var(--beige); font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-#s3 .grid { display:grid; grid-template-columns:1fr 1fr; gap:0 50px; }
+@media(max-width:680px){ main{ grid-template-columns:1fr; } }
 
-/* ──────────────────────────────────────
-   SLIDE 4 — PROGRAMA
-────────────────────────────────────── */
-#s4 { flex-direction:column; background:var(--black); padding:3% 5%; }
-#s4 .days { display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; align-items:start; margin-top:16px; }
-#s4 .day-hdr { background:var(--gold); padding:10px 16px; border-radius:8px 8px 0 0; display:flex; justify-content:space-between; align-items:center; }
-#s4 .day-hdr h3 { font-size:clamp(13px,1.7vw,20px); font-weight:900; color:var(--black); text-transform:uppercase; }
-#s4 .day-hdr .dt { font-size:clamp(11px,1.3vw,16px); font-weight:700; color:var(--black); }
-#s4 .day-sub { background:rgba(201,168,76,.12); padding:7px 16px; font-size:clamp(11px,1.02vw,14px); color:var(--gold); font-style:italic; border-left:3px solid var(--gold); }
-#s4 .day-body { background:rgba(201,168,76,.04); border:1.5px solid rgba(201,168,76,.25); border-top:none; border-radius:0 0 8px 8px; }
-
-/* ──────────────────────────────────────
-   SLIDE 5 — CLASE 1 OVERVIEW
-────────────────────────────────────── */
-#s5 { flex-direction:row; background:var(--black); }
-#s5 .main { flex:1; display:flex; flex-direction:column; justify-content:flex-start; padding:3.5% 5%; }
-#s5 .step-list { flex:1; min-height:0; display:flex; flex-direction:column; gap:8px; padding-top:4px; padding-bottom:74px; }
-#s5 .step-card { margin-bottom:0; flex:1; align-items:center; padding:6px 12px; border-radius:8px; background:rgba(201,168,76,.04); }
-#s5 .sidebar { width:clamp(260px,24vw,320px); background:var(--beige); padding:5% 5%; display:flex; flex-direction:column; justify-content:center; gap:14px; }
-#s5 .sidebar h3 { font-size:clamp(11px,1.2vw,14px); font-weight:800; color:var(--black); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-#s5 .sidebar .link-btn {
-  justify-content:flex-start;
-  gap:8px;
-  padding:12px 14px;
-  white-space:nowrap;
-  font-size:clamp(10px,.95vw,13px);
+.class-card {
+  background:rgba(13,13,13,.7);
+  border:1.5px solid rgba(201,168,76,.3);
+  border-radius:18px; overflow:hidden;
+  display:flex; flex-direction:column;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  text-decoration:none;
 }
-#s5 .sidebar .link-btn .link-icon { flex:0 0 auto; }
-#s5 .sidebar .link-btn .link-label { min-width:0; white-space:nowrap; letter-spacing:0; }
-
-/* ──────────────────────────────────────
-   SLIDE 6 — CUENTA USCIS + FORMULARIOS
-────────────────────────────────────── */
-#s6 { flex-direction:column; background:var(--dark); padding:4% 6%; }
-#s6 .panels { display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; margin-top:16px; }
-
-/* ──────────────────────────────────────
-   SLIDE 7 — I-94 & EOIR
-────────────────────────────────────── */
-#s7 { flex-direction:column; background:var(--black); padding:4% 6%; }
-#s7 .panels { display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; margin-top:16px; }
-
-/* ──────────────────────────────────────
-   SLIDE 8 — LLAMAR A USCIS
-────────────────────────────────────── */
-#s8 { flex-direction:row; background:var(--black); }
-#s8 .left { flex:1; display:flex; flex-direction:column; justify-content:center; padding:4% 5%; }
-#s8 .right { width:36%; display:flex; flex-direction:column; justify-content:center; padding:4% 4% 4% 0; gap:14px; }
-.phone-box { background:var(--gold); border-radius:14px; padding:28px; text-align:center; }
-.phone-box .phl { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--black); margin-bottom:8px; }
-.phone-box .phnum { font-size:clamp(22px,3.5vw,42px); font-weight:900; color:var(--black); letter-spacing:2px; }
-
-/* ──────────────────────────────────────
-   SLIDE 9 — ENVÍO DE PAQUETES
-────────────────────────────────────── */
-#s9 { flex-direction:column; background:var(--black); padding:4% 6%; }
-#s9 .factors { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; flex:1; margin-top:16px; }
-#s9 .actions { margin-top:14px; padding-bottom:74px; }
-.factor { background:rgba(201,168,76,.06); border:1.5px solid rgba(201,168,76,.28); border-radius:10px; padding:20px; }
-.factor .fnum { font-size:36px; font-weight:900; color:rgba(201,168,76,.18); line-height:1; margin-bottom:8px; }
-.factor h4 { font-size:clamp(13px,1.35vw,16px); font-weight:700; color:var(--gold); text-transform:uppercase; margin-bottom:6px; }
-.factor p { font-size:clamp(11px,1.12vw,14px); color:var(--beige); line-height:1.55; }
-
-/* ──────────────────────────────────────
-   SLIDE 10 — PREPARACIÓN
-────────────────────────────────────── */
-#s10 { flex-direction:column; background:var(--black); padding:4% 6%; }
-#s10 .prep { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; flex:1; margin-top:16px; }
-.prep-card { border:1.5px solid rgba(201,168,76,.3); border-radius:10px; padding:20px; }
-.prep-card .picon { font-size:26px; margin-bottom:8px; }
-.prep-card h4 { font-size:clamp(12px,1.32vw,16px); font-weight:700; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
-.prep-card ul { list-style:none; }
-.prep-card ul li { font-size:clamp(11px,1.14vw,14px); color:var(--beige); line-height:1.58; padding:2px 0 2px 16px; position:relative; }
-.prep-card ul li::before { content:'•'; color:var(--gold); position:absolute; left:0; font-weight:700; }
-
-/* ──────────────────────────────────────
-   SLIDE 11 — I-485
-────────────────────────────────────── */
-#s11 { flex-direction:row; background:var(--black); }
-#s11 .left { flex:1; display:flex; flex-direction:column; justify-content:center; padding:5% 6%; }
-#s11 .right { width:40%; background:var(--beige); padding:5%; display:flex; flex-direction:column; justify-content:center; gap:22px; position:relative; }
-#s11 .right::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:var(--gold); }
-#s11 .right h3 { font-size:clamp(11px,1.3vw,15px); font-weight:800; color:var(--black); text-transform:uppercase; letter-spacing:.5px; margin-bottom:8px; }
-#s11 .right ul { list-style:none; }
-#s11 .right ul li { font-size:clamp(11px,1.2vw,15px); color:#333; padding:3px 0 3px 20px; position:relative; line-height:1.45; }
-#s11 .right ul li::before { content:'✓'; color:var(--gold-dk); position:absolute; left:0; font-weight:900; }
-.form-badge { display:inline-flex; align-items:center; justify-content:center; background:var(--gold); color:var(--black); font-weight:900; font-size:clamp(28px,4.5vw,56px); padding:14px 26px; border-radius:10px; margin-bottom:16px; letter-spacing:2px; }
-
-/* ──────────────────────────────────────
-   SLIDE 12 — FORMULARIOS CLASE 2
-────────────────────────────────────── */
-#s12 { flex-direction:column; background:var(--black); padding:3% 5%; }
-#s12 .forms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; flex:1; margin-top:16px; }
-
-/* ──────────────────────────────────────
-   SLIDE 13 — I-130 / I-130A
-────────────────────────────────────── */
-#s13 { flex-direction:column; background:var(--black); padding:4% 6%; }
-#s13 .content { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; flex:1; margin-top:16px; }
-#s13 .proofs { background:rgba(201,168,76,.07); border:1.5px solid var(--gold); border-radius:10px; padding:20px; }
-#s13 .proofs h3 { font-size:clamp(12px,1.32vw,15px); font-weight:800; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
-
-/* ──────────────────────────────────────
-   SLIDE 14 — N-400 vs N-600
-────────────────────────────────────── */
-#s14 { flex-direction:column; background:var(--black); padding:4% 6%; }
-#s14 .compare { display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; margin-top:16px; }
-.cmp-col { border-radius:10px; overflow:hidden; }
-.cmp-hdr { background:var(--gold); padding:14px 20px; text-align:center; }
-.cmp-hdr h3 { font-size:clamp(20px,3.5vw,40px); font-weight:900; color:var(--black); }
-.cmp-body { background:rgba(201,168,76,.06); border:1.5px solid rgba(201,168,76,.3); border-top:none; border-radius:0 0 10px 10px; padding:20px; }
-.cmp-body .cmp-sub { font-size:clamp(12px,1.2vw,15px); font-weight:700; color:var(--white); margin-bottom:10px; }
-.dot-neg { background:#555 !important; color:var(--white) !important; }
-
-/* ──────────────────────────────────────
-   SLIDE 15 — DIRECTORIO
-────────────────────────────────────── */
-#s15 { flex-direction:column; background:var(--black); padding:3.5% 5.5%; }
-#s15 .dir { display:grid; grid-template-columns:2fr 1fr; gap:28px; flex:1; margin-top:16px; align-items:start; }
-#s15 .res h3 { font-size:clamp(12px,1.3vw,15px); font-weight:800; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
-
-/* ──────────────────────────────────────
-   SLIDE 16 — CIERRE
-────────────────────────────────────── */
-#s16 { flex-direction:row; background:var(--black); }
-#s16 .left { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:5%; text-align:center; }
-#s16 .right { width:42%; background:linear-gradient(140deg,#1c1500,#0d0d0d); display:flex; align-items:center; justify-content:center; padding:5%; position:relative; }
-#s16 .right::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 50%,rgba(201,168,76,.12),transparent 70%); }
-.cupos-box { border:3px solid var(--gold); border-radius:12px; padding:28px 40px; margin-bottom:22px; }
-.cupos-box .cql { font-size:clamp(11px,1.22vw,14px); font-weight:700; letter-spacing:3px; color:var(--beige); text-transform:uppercase; margin-bottom:4px; }
-.cupos-box .cqn { font-size:clamp(56px,9vw,110px); font-weight:900; color:var(--gold); line-height:1; }
-.cupos-box .cqs { font-size:clamp(13px,1.8vw,20px); font-weight:700; color:var(--white); text-transform:uppercase; }
-.closing-card { background:rgba(201,168,76,.08); border:1.5px solid rgba(201,168,76,.3); border-radius:10px; padding:20px 28px; }
-.closing-card p { font-size:clamp(12px,1.22vw,16px); color:var(--beige); margin-bottom:5px; line-height:1.5; }
-.closing-card .cn { font-size:clamp(15px,2vw,24px); font-weight:800; color:var(--white); text-transform:uppercase; }
-.cta { font-size:clamp(14px,2vw,24px); font-weight:900; color:var(--gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-.cta-sub { font-size:clamp(12px,1.32vw,16px); color:var(--beige); font-style:italic; }
-#s16 .closing-eyebrow {
-  font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gold);
-  text-transform:uppercase; font-style:italic;
+.class-card:hover {
+  transform:translateY(-5px);
+  border-color:rgba(201,168,76,.7);
+  box-shadow:0 16px 48px rgba(0,0,0,.5), 0 0 0 1px rgba(201,168,76,.15);
 }
-#s16 .closing-address {
-  margin-top:8px; font-size:clamp(10px,1.04vw,13px);
+.card-header {
+  background:linear-gradient(135deg, #1c1500, #0d0d0d);
+  padding:28px 28px 20px;
+  position:relative; overflow:hidden;
 }
-#s16 .promo-shell {
-  position:relative; z-index:1; border:1px solid rgba(201,168,76,.35); border-radius:14px;
-  padding:32px 26px; background:rgba(0,0,0,.5); text-align:center; width:100%;
+.card-header::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 70% 30%, rgba(201,168,76,.12), transparent 65%);
 }
-#s16 .promo-shell .academy-eyebrow {
-  color:var(--gold); font-size:11px; font-weight:700; letter-spacing:3px;
-  text-transform:uppercase; margin-bottom:10px;
+.card-day {
+  font-size:11px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:6px; position:relative;
 }
-#s16 .promo-shell .academy-subtitle {
-  color:var(--beige); font-size:clamp(10px,1.04vw,13px); margin-bottom:20px; font-style:italic;
+.card-title {
+  font-size:clamp(22px,3.5vw,36px); font-weight:900;
+  text-transform:uppercase; color:var(--white);
+  line-height:1; position:relative; margin-bottom:4px;
 }
-#s16 .promo-shell .availability-eyebrow {
-  font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--black);
+.card-title span { color:var(--gold); }
+.card-date {
+  font-size:clamp(12px,1.4vw,15px); color:var(--beige-dk);
+  font-weight:600; position:relative; margin-top:8px;
 }
-#s16 .promo-shell .coach-eyebrow {
-  font-size:10px; color:var(--gold); font-style:italic; font-weight:600; letter-spacing:1px;
+.card-body {
+  padding:24px 28px; flex:1; display:flex; flex-direction:column; gap:10px;
 }
-#s16 .promo-shell .address-note {
-  font-size:clamp(10px,1vw,12px); color:var(--beige); line-height:1.4;
+.card-topic {
+  display:flex; align-items:flex-start; gap:10px;
+}
+.card-topic .dot {
+  width:20px; height:20px; border-radius:50%;
+  background:var(--gold); flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--black); font-size:10px; font-weight:900; margin-top:1px;
+}
+.card-topic .txt {
+  font-size:clamp(12px,1.25vw,14px); color:var(--beige);
+  line-height:1.45; font-weight:500;
+}
+.card-cta {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 28px;
+  border-top:1px solid rgba(201,168,76,.2);
+  background:rgba(201,168,76,.04);
+}
+.card-cta .btn-label {
+  font-size:13px; font-weight:800; text-transform:uppercase;
+  letter-spacing:1px; color:var(--gold);
+}
+.card-cta .arrow {
+  width:36px; height:36px; border-radius:50%;
+  border:1.5px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold); font-size:18px;
+  transition:background .2s, color .2s;
+}
+.class-card:hover .arrow {
+  background:var(--gold); color:var(--black);
 }
 
-#s4 .days > div,
-#s6 .panels > div,
-#s7 .panels > div,
-#s12 .forms-grid > div,
-#s13 .content > div,
-#s14 .compare > div,
-#s15 .dir > * { min-width:0; }
-
-@media (max-width:1024px) {
-  .nav { bottom:12px; }
-  #s5 .main { padding-right:4%; }
-  #s5 .sidebar { width:250px; padding:4% 3.5%; }
-  #s5 .step-list { gap:6px; padding-bottom:82px; }
-  #s5 .step-card { padding:6px 10px; }
-  #s5 .num-row h4 { font-size:12px; }
-  #s5 .num-row p { font-size:11px; }
-  #s9 .actions { flex-direction:column; padding-bottom:82px; }
-  #s9 .actions .link-btn { flex-basis:auto; }
+/* ── FOOTER ── */
+footer {
+  text-align:center; padding:0 20px 32px;
+  font-size:12px; color:rgba(245,237,214,.45);
+  letter-spacing:.5px;
 }
+footer a { color:rgba(201,168,76,.55); text-decoration:none; }
 </style>
 </head>
 <body>
-<div class="deck">
 
-<!-- ══════════════════════════════
-     SLIDE 1 — PORTADA
-══════════════════════════════ -->
-<div class="slide active" id="s1">
-  <div class="left">
-    <div class="tag">TSG Services Academy</div>
-    <h1>CURSO DE<br>INMIGRACIÓN</h1>
-    <p class="subtitle">"Conoce tus opciones, toma el control <em>de tu futuro</em>"</p>
-    <div class="info-grid">
-      <div class="info-box"><div class="lbl">📅 Fecha</div><div class="val">Julio 4 y 5</div></div>
-      <div class="info-box"><div class="lbl">🕐 Horario</div><div class="val">8:30 AM – 3:30 PM</div></div>
-      <div class="info-box"><div class="lbl">💲 Inversión</div><div class="val">$799.00</div></div>
-      <div class="info-box"><div class="lbl">📍 Modalidad</div><div class="val">Presencial</div></div>
-    </div>
-    <div class="inst-box"><div class="il">Instructora</div><div class="in">TATIANA SERRATE</div></div>
-    <div class="addr"><div class="pin">📍</div><span>5870 Highway 6 N, Houston, TX 77084 Suite 314</span></div>
-  </div>
-  <div class="right">
-    <img src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(5).jpeg"
-         alt="TSG Services Academy Flyer"
-         width="1024" height="1536" decoding="async" fetchpriority="high"
-         class="hero-flyer">
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 2 — MATERIAL PROMOCIONAL
-══════════════════════════════ -->
-<div class="slide" id="spromo">
-  <div class="promo-wrap">
-    <div class="tag">Material Promocional</div>
-    <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:8px;">FLYERS <span class="gold">PROMOCIONALES</span> DEL CURSO</h2>
-    <div class="gold-bar" style="margin:8px 0 14px;"></div>
-    <div class="promo-stack">
-      <div class="promo-row top">
-        <button type="button" class="promo-card preview-trigger" data-preview-src="WhatsApp%20Image%202026-05-12%20at%2015.41.43.jpeg" data-preview-group="promo-flyers" data-preview-title="Flyer promocional 1 del curso"><img src="WhatsApp%20Image%202026-05-12%20at%2015.41.43.jpeg" alt="Flyer promocional 1 del curso" width="1149" height="1369" loading="lazy" decoding="async"></button>
-        <button type="button" class="promo-card preview-trigger" data-preview-src="WhatsApp%20Image%202026-05-12%20at%2015.41.44.jpeg" data-preview-group="promo-flyers" data-preview-title="Flyer promocional 2 del curso"><img src="WhatsApp%20Image%202026-05-12%20at%2015.41.44.jpeg" alt="Flyer promocional 2 del curso" width="1024" height="1536" loading="lazy" decoding="async"></button>
-        <button type="button" class="promo-card preview-trigger" data-preview-src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(1).jpeg" data-preview-group="promo-flyers" data-preview-title="Flyer promocional 3 del curso"><img src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(1).jpeg" alt="Flyer promocional 3 del curso" width="1024" height="1536" loading="lazy" decoding="async"></button>
-        <button type="button" class="promo-card preview-trigger" data-preview-src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(2).jpeg" data-preview-group="promo-flyers" data-preview-title="Flyer promocional 4 del curso"><img src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(2).jpeg" alt="Flyer promocional 4 del curso" width="1024" height="1536" loading="lazy" decoding="async"></button>
-      </div>
-      <div class="promo-row bottom">
-        <button type="button" class="promo-card preview-trigger" data-preview-src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(3).jpeg" data-preview-group="promo-flyers" data-preview-title="Flyer promocional 5 del curso"><img src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(3).jpeg" alt="Flyer promocional 5 del curso" width="1024" height="1536" loading="lazy" decoding="async"></button>
-        <button type="button" class="promo-card preview-trigger" data-preview-src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(4).jpeg" data-preview-group="promo-flyers" data-preview-title="Flyer promocional 6 del curso"><img src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(4).jpeg" alt="Flyer promocional 6 del curso" width="1024" height="1536" loading="lazy" decoding="async"></button>
-        <button type="button" class="promo-card preview-trigger" data-preview-src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(5).jpeg" data-preview-group="promo-flyers" data-preview-title="Flyer promocional 7 del curso"><img src="WhatsApp%20Image%202026-05-12%20at%2015.41.44%20(5).jpeg" alt="Flyer promocional 7 del curso" width="1024" height="1536" loading="lazy" decoding="async"></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 3 — SOBRE TSG
-══════════════════════════════ -->
-<div class="slide" id="s2">
-  <div class="left">
-    <div class="tag">Sobre Nosotros</div>
-    <h2 style="font-size:clamp(22px,4vw,52px);font-weight:900;text-transform:uppercase;line-height:1;color:var(--white);">
-      <span class="gold">SOBRE</span> TSG<br>SERVICES ACADEMY
-    </h2>
-    <div class="gold-bar"></div>
-    <p style="font-size:clamp(12px,1.4vw,16px);color:var(--beige);line-height:1.7;max-width:460px;">
-      Comprometida con la educación y el empoderamiento de la comunidad hispana en Houston, Texas. Cursos prácticos, en español, diseñados para que cada persona pueda entender y gestionar su propio proceso migratorio con confianza.
-    </p>
-  </div>
-  <div class="right">
-    <p class="bio">
-      TSG Academy fue fundada por una mujer visionaria, comprometida con la educación y el empoderamiento de su comunidad. Con años de experiencia en procesos migratorios y una trayectoria ayudando a cientos de personas a entender y presentar sus propios casos ante USCIS y la corte de inmigración.
-    </p>
-    <div class="inst-tag">
-      <div class="itl">Instructora</div>
-      <div class="itn">TATIANA SERRATE</div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 3 — APRENDERÁS
-══════════════════════════════ -->
-<div class="slide" id="s3">
-  <div class="tag">Contenido del curso</div>
-  <h2 style="font-size:clamp(20px,3.5vw,44px);font-weight:900;text-transform:uppercase;line-height:1;"><span class="gold">EN ESTE CURSO</span> APRENDERÁS</h2>
+<header>
+  <div class="academy-tag">TSG Services Academy</div>
+  <h1>CURSO DE<br><span>INMIGRACIÓN</span></h1>
+  <p class="subtitle">"Conoce tus opciones, toma el control <em>de tu futuro</em>"</p>
   <div class="gold-bar"></div>
-  <div class="audience">
-    <span style="font-size:22px;">👥</span>
-    <p>Para quienes quieren tomar el control de su proceso y ayudar a otros</p>
+  <div class="meta-strip">
+    <div class="meta-chip"><span class="icon">📅</span> Julio 11 y 12, 2026</div>
+    <div class="meta-chip"><span class="icon">🕐</span> 8:30 AM – 3:30 PM</div>
+    <div class="meta-chip"><span class="icon">💲</span> $799.00</div>
+    <div class="meta-chip"><span class="icon">📍</span> 5870 Hwy 6 N, Houston, TX 77084 Suite 314</div>
+    <div class="meta-chip"><span class="icon">🎓</span> Presencial</div>
   </div>
-  <div class="grid">
+  <div class="instructor-strip">
+    <div class="line"></div>
     <div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo crear una cuenta en USCIS.gov</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo descargar formularios oficiales actualizados</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo buscar tu historial de entrada/salida I-94</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo localizar tu caso en corte (EOIR)</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo llamar a USCIS correctamente</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo confeccionar tu paquete migratorio</div></div>
+      <div class="label">Instructora</div>
+      <div class="name">Tatiana Serrate</div>
     </div>
-    <div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo solicitar tu récord criminal</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo hacer fotos de visas/pasaporte</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo obtener tu I-94</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo buscar los costos de cada trámite</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Cómo crear labels de envío USPS</div></div>
-      <div class="check-row"><div class="dot">✓</div><div class="txt">Formularios I-485, I-912, I-765, I-130, N-400 y más</div></div>
-    </div>
+    <div class="line"></div>
   </div>
-</div>
+</header>
 
-<!-- ══════════════════════════════
-     SLIDE 4 — PROGRAMA 2 DÍAS
-══════════════════════════════ -->
-<div class="slide" id="s4">
-  <div class="tag">Estructura del curso</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;">PROGRAMA DEL CURSO — <span class="gold">2 DÍAS INTENSIVOS</span></h2>
-  <div class="days">
-    <div>
-      <div class="day-hdr"><h3>CLASE #1</h3><span class="dt">DÍA 1: JULIO 4</span></div>
-      <div class="day-sub">Desde cómo crear una cuenta en USCIS hasta el Formulario I-485 (Ajuste de Estatus).</div>
-      <table class="ftable" style="border-radius:0 0 8px 8px;overflow:hidden;">
-        <thead><tr><th>Tema</th><th>Descripción</th></tr></thead>
-        <tbody>
-          <tr><td>Cuenta USCIS.gov</td><td>Registro paso a paso en la página oficial</td></tr>
-          <tr><td>Descargar Formularios</td><td>Formularios oficiales actualizados desde USCIS</td></tr>
-          <tr><td>Historial I-94</td><td>Buscar historial de entrada/salida (CBP)</td></tr>
-          <tr><td>Caso en Corte (EOIR)</td><td>Localizar el estado de tu caso en EOIR</td></tr>
-          <tr><td>Llamar a USCIS</td><td>Menús, extensiones y acceso a agente en vivo</td></tr>
-          <tr><td>Envío de Paquetes</td><td>Dónde y cómo enviar paquetes migratorios</td></tr>
-          <tr><td>Preparación</td><td>Organizar paquete, fotos, récord criminal, costos</td></tr>
-          <tr><td>Labels USPS</td><td>Crear etiquetas de envío USPS</td></tr>
-          <tr><td>Formulario I-485</td><td>Ajuste de Estatus — documentación y pruebas</td></tr>
-        </tbody>
-      </table>
+<main>
+  <!-- CLASE 1 -->
+  <a class="class-card" href="clase1.html" id="btn-clase1">
+    <div class="card-header">
+      <div class="card-day">Sábado · Día 1</div>
+      <div class="card-title">CLASE <span>1</span></div>
+      <div class="card-date">📅 11 de Julio, 2026</div>
     </div>
-    <div>
-      <div class="day-hdr"><h3>CLASE #2</h3><span class="dt">DÍA 2: JULIO 5</span></div>
-      <div class="day-sub">Desde el Formulario I-912 hasta N-400 y sesión de preguntas.</div>
-      <table class="ftable" style="border-radius:0 0 8px 8px;overflow:hidden;">
-        <thead><tr><th>Formulario</th><th>Descripción</th></tr></thead>
-        <tbody>
-          <tr><td>I-912</td><td>Exención de Tarifas</td></tr>
-          <tr><td>I-765</td><td>Permiso de Trabajo</td></tr>
-          <tr><td>G-1145</td><td>Aviso electrónico de recepción</td></tr>
-          <tr><td>G-1450</td><td>Pago con tarjeta de crédito</td></tr>
-          <tr><td>N-400</td><td>Solicitud de Ciudadanía (Naturalización)</td></tr>
-          <tr><td>N-600</td><td>Diferencias con N-400 — Certificado de Ciudadanía</td></tr>
-          <tr><td>I-130 / I-130A</td><td>Peticiones Familiares y pruebas requeridas</td></tr>
-          <tr><td>Sesión Final</td><td>Preguntas y respuestas con estudiantes</td></tr>
-        </tbody>
-      </table>
+    <div class="card-body">
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Crear cuenta en USCIS.gov</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Descargar formularios oficiales actualizados</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Historial de entrada/salida I-94 (CBP)</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Cómo llamar a USCIS correctamente</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Envío de paquetes migratorios</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Preparación del paquete, fotos, récord criminal</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Formulario I-485 — Ajuste de Estatus</div></div>
     </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 5 — CLASE 1 OVERVIEW
-══════════════════════════════ -->
-<div class="slide" id="s5">
-  <div class="main">
-    <div class="tag">Clase 1 — Día 1</div>
-    <h2 style="font-size:clamp(20px,3.2vw,40px);font-weight:900;text-transform:uppercase;line-height:1;">NAVEGANDO EL <span class="gold">SISTEMA USCIS</span></h2>
-    <div class="gold-bar"></div>
-    <div class="step-list">
-      <div class="num-row step-card"><div class="num">1</div><div><h4>Crear cuenta en USCIS.gov</h4><p>Registro paso a paso en la plataforma oficial de USCIS.</p></div></div>
-      <div class="num-row step-card"><div class="num">2</div><div><h4>Descargar formularios actualizados</h4><p>Cómo obtener cualquier formulario directamente desde USCIS.gov/forms.</p></div></div>
-      <div class="num-row step-card"><div class="num">3</div><div><h4>Historial de entrada/salida I-94 (CBP)</h4><p>Acceder, descargar e imprimir tu registro de entrada/salida del país.</p></div></div>
-      <div class="num-row step-card"><div class="num">4</div><div><h4>Localizar tu caso en corte (EOIR)</h4><p>Buscar el estado de tu caso en el sistema de la corte de inmigración.</p></div></div>
-      <div class="num-row step-card"><div class="num">5</div><div><h4>Llamar a USCIS correctamente</h4><p>Menús, extensiones y técnicas para hablar con un agente en vivo.</p></div></div>
-      <div class="num-row step-card"><div class="num">6</div><div><h4>Dónde enviar tu paquete migratorio</h4><p>Cada formulario tiene su propia dirección de envío según tipo, motivo y estado.</p></div></div>
+    <div class="card-cta">
+      <span class="btn-label">Abrir Presentación</span>
+      <span class="arrow">→</span>
     </div>
-  </div>
-  <div class="sidebar">
-    <h3>ENLACES OFICIALES</h3>
-    <a class="link-btn" href="https://www.uscis.gov" target="_blank"><span class="link-icon" aria-hidden="true">🌐</span><span class="link-label">USCIS.GOV</span></a>
-    <a class="link-btn" href="https://www.uscis.gov/forms/all-forms" target="_blank"><span class="link-icon" aria-hidden="true">📄</span><span class="link-label">FORMULARIOS</span></a>
-    <a class="link-btn" href="https://i94.cbp.dhs.gov/home" target="_blank"><span class="link-icon" aria-hidden="true">🛂</span><span class="link-label">PORTAL I-94</span></a>
-    <a class="link-btn" href="https://acis.eoir.justice.gov/en" target="_blank"><span class="link-icon" aria-hidden="true">⚖️</span><span class="link-label">CORTE (EOIR)</span></a>
-  </div>
-</div>
+  </a>
 
-<!-- ══════════════════════════════
-     SLIDE 6 — CUENTA USCIS & FORMULARIOS
-══════════════════════════════ -->
-<div class="slide" id="s6">
-  <div class="tag">Clase 1 — Temas 1 & 2</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;"><span class="gold">CREAR CUENTA</span> EN USCIS.GOV &amp; DESCARGAR FORMULARIOS</h2>
-  <div class="gold-bar"></div>
-  <div class="panels">
-    <div class="panel">
-      <h3>🔑 Cómo crear tu cuenta en USCIS.gov</h3>
-      <p>Ingresa a <strong style="color:var(--gold);">www.uscis.gov</strong> y selecciona "Crear cuenta". Necesitarás un correo electrónico válido y crear una contraseña segura. Una vez registrado, puedes rastrear casos, recibir notificaciones y acceder a formularios en línea directamente desde tu perfil.</p>
-      <div style="margin-top:12px;">
-        <a class="link-btn" href="https://www.uscis.gov" target="_blank">🌐 Ir a USCIS.GOV</a>
-      </div>
+  <!-- CLASE 2 -->
+  <a class="class-card" href="clase2.html" id="btn-clase2">
+    <div class="card-header">
+      <div class="card-day">Domingo · Día 2</div>
+      <div class="card-title">CLASE <span>2</span></div>
+      <div class="card-date">📅 12 de Julio, 2026</div>
     </div>
-    <div class="panel">
-      <h3>📄 Cómo descargar formularios oficiales</h3>
-      <p>Visita <strong style="color:var(--gold);">uscis.gov/forms/all-forms</strong> para descargar cualquier formulario directamente desde la fuente oficial. Siempre usa formularios de USCIS.gov — versiones de terceros pueden estar desactualizadas o incorrectas y causar rechazo de tu solicitud.</p>
-      <div style="margin-top:12px;">
-        <a class="link-btn" href="https://www.uscis.gov/forms/all-forms" target="_blank">📋 Ver todos los formularios</a>
-      </div>
+    <div class="card-body">
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Formulario I-912 — Exención de Tarifas</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Formulario I-765 — Permiso de Trabajo</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">G-1145 y G-1450 — Avisos y pagos</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">N-400 — Solicitud de Naturalización</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">N-600 — Certificado de Ciudadanía</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">I-130 / I-130A — Peticiones Familiares</div></div>
+      <div class="card-topic"><div class="dot">✓</div><div class="txt">Sesión de preguntas y respuestas</div></div>
     </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 7 — I-94 & EOIR
-══════════════════════════════ -->
-<div class="slide" id="s7">
-  <div class="tag">Clase 1 — Temas 3 & 4</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;">HISTORIAL <span class="gold">I-94</span> &amp; LOCALIZADOR DE CASO <span class="gold">EOIR</span></h2>
-  <div class="gold-bar"></div>
-  <div class="panels">
-    <div class="panel">
-      <h3>🛂 Historial de entrada/salida I-94 (CBP)</h3>
-      <p>El I-94 es el registro oficial de tu última entrada a los Estados Unidos. Para descargarlo, visita <strong style="color:var(--gold);">i94.cbp.dhs.gov/home</strong>. Puedes ver la fecha de tu último ingreso, el puerto de entrada y el estatus con el que entraste. Este documento es requerido en muchos trámites de USCIS.</p>
-      <div style="margin-top:12px;">
-        <a class="link-btn" href="https://i94.cbp.dhs.gov/home" target="_blank">🛂 Portal I-94 (CBP)</a>
-      </div>
+    <div class="card-cta">
+      <span class="btn-label">Abrir Presentación</span>
+      <span class="arrow">→</span>
     </div>
-    <div class="panel">
-      <h3>⚖️ Localizar tu caso en corte (EOIR)</h3>
-      <p>Si tienes un caso abierto en la corte de inmigración, puedes buscar su estado en el sistema EOIR (Executive Office for Immigration Review). Visita <strong style="color:var(--gold);">acis.eoir.justice.gov/en</strong> e ingresa tu número de caso (A-number) para ver fechas de audiencia y estado del proceso.</p>
-      <div style="margin-top:12px;">
-        <a class="link-btn" href="https://acis.eoir.justice.gov/en" target="_blank">⚖️ Corte EOIR</a>
-      </div>
-    </div>
-  </div>
-</div>
+  </a>
+</main>
 
-<!-- ══════════════════════════════
-     SLIDE 8 — LLAMAR A USCIS
-══════════════════════════════ -->
-<div class="slide" id="s8">
-  <div class="left">
-    <div class="tag">Clase 1 — Tema 5</div>
-    <h2 style="font-size:clamp(20px,3.5vw,44px);font-weight:900;text-transform:uppercase;line-height:1;">CÓMO LLAMAR A <span class="gold">USCIS</span> CORRECTAMENTE</h2>
-    <div class="gold-bar"></div>
-    <div class="num-row"><div class="num" style="background:transparent;border:2px solid var(--gold);">1</div><div><h4>Prepara tu información</h4><p>Ten a la mano tu número de caso (receipt number) o A-number, nombre completo y fecha de nacimiento antes de llamar.</p></div></div>
-    <div class="num-row"><div class="num" style="background:transparent;border:2px solid var(--gold);">2</div><div><h4>Navega el menú correctamente</h4><p>Escucha las opciones con calma. Generalmente la opción para hablar con un agente en vivo está al final del menú o presionando "0" repetidamente.</p></div></div>
-    <div class="num-row"><div class="num" style="background:transparent;border:2px solid var(--gold);">3</div><div><h4>Mejor horario para llamar</h4><p>Llama en las primeras horas de la mañana (8–10 AM hora del este) para menor tiempo de espera.</p></div></div>
-    <div class="num-row"><div class="num" style="background:transparent;border:2px solid var(--gold);">4</div><div><h4>Toma notas</h4><p>Anota el nombre del agente, el número de referencia de la llamada, la fecha y hora, y cualquier información que te den.</p></div></div>
-  </div>
-  <div class="right">
-    <div class="phone-box">
-      <div class="phl">Número oficial USCIS</div>
-      <div class="phnum">1-800-375-5283</div>
-    </div>
-    <div class="panel" style="margin-top:0;">
-      <h3>⚠️ Importante</h3>
-      <p>USCIS nunca te pedirá dinero por teléfono. Si alguien lo hace, es una estafa. Solo utiliza el número oficial.</p>
-    </div>
-  </div>
-</div>
+<footer>
+  <p>TSG Services Academy &nbsp;·&nbsp; Houston, Texas &nbsp;·&nbsp;
+    <a href="presentacion_completa.html">Ver presentación completa</a>
+  </p>
+</footer>
 
-<!-- ══════════════════════════════
-     SLIDE 9 — ENVÍO DE PAQUETES
-══════════════════════════════ -->
-<div class="slide" id="s9">
-  <div class="tag">Clase 1 — Tema 6</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;">CÓMO SABER A DÓNDE ENVIAR TU <span class="gold">PAQUETE MIGRATORIO</span></h2>
-  <div class="gold-bar"></div>
-  <p style="font-size:clamp(11px,1.3vw,15px);color:var(--beige);margin-bottom:0;">Cada formulario tiene su propia dirección de envío. La dirección correcta depende de varios factores:</p>
-  <div class="factors">
-    <div class="factor"><div class="fnum">01</div><h4>Tipo de Formulario</h4><p>Cada formulario (I-485, I-130, I-765, etc.) tiene su propia dirección de envío designada por USCIS.</p></div>
-    <div class="factor"><div class="fnum">02</div><h4>Motivo de la Solicitud</h4><p>Ajuste de estatus, petición familiar, permiso de trabajo — cada motivo puede requerir enviar a un centro diferente.</p></div>
-    <div class="factor"><div class="fnum">03</div><h4>Modalidad de Envío</h4><p>Si envías por correo postal (USPS, FedEx, UPS) o si presentas en línea a través de myUSCIS, la dirección cambia.</p></div>
-    <div class="factor"><div class="fnum">04</div><h4>Estado de Residencia</h4><p>Tu estado de residencia determina cuál Centro de Servicio USCIS debe recibir tu paquete.</p></div>
-  </div>
-  <div class="actions">
-    <a class="link-btn" href="https://www.uscis.gov/forms" target="_blank">📍 Consultar dirección por formulario en USCIS.gov</a>
-    <a class="link-btn" href="https://www.uscis.gov/forms/filing-fees" target="_blank">💲 Consultar tarifas actualizadas</a>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 10 — PREPARACIÓN DEL PAQUETE
-══════════════════════════════ -->
-<div class="slide" id="s10">
-  <div class="tag">Clase 1 — Preparación</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;">PREPARACIÓN Y <span class="gold">ENVÍO DE PAQUETES</span></h2>
-  <div class="gold-bar"></div>
-  <div class="prep">
-    <div class="prep-card">
-      <div class="picon">📦</div>
-      <h4>Cómo organizar tu paquete migratorio</h4>
-      <ul>
-        <li>Cada formulario tiene su propia dirección de envío</li>
-        <li>Depende del tipo de formulario, motivo y estado</li>
-        <li>Crea labels de envío USPS con confirmación de entrega</li>
-        <li>Incluye copia de todo lo que envías</li>
-      </ul>
-    </div>
-    <div class="prep-card">
-      <div class="picon">📷</div>
-      <h4>Cómo hacer fotos de pasaporte/visa</h4>
-      <ul>
-        <li>Fondo blanco liso, sin sombras</li>
-        <li>Tamaño: 2×2 pulgadas (51×51 mm)</li>
-        <li>Rostro centrado, ojos abiertos, expresión neutral</li>
-        <li>Sin lentes de sol, sin sombrero (excepto religioso)</li>
-        <li>Foto reciente (últimos 6 meses)</li>
-      </ul>
-    </div>
-    <div class="prep-card">
-      <div class="picon">🔍</div>
-      <h4>Cómo sacar récord criminal</h4>
-      <ul>
-        <li>Proceso para obtener tus antecedentes penales</li>
-        <li>Formulario FD-258 — huellas dactilares</li>
-        <li>Se solicita a través del FBI Identity History</li>
-        <li>Requerido en varios trámites de USCIS</li>
-      </ul>
-    </div>
-    <div class="prep-card">
-      <div class="picon">💲</div>
-      <h4>Dónde buscar costos USCIS</h4>
-      <ul>
-        <li>Consulta tarifas actualizadas en USCIS.gov</li>
-        <li>Los costos cambian — siempre verifica antes de enviar</li>
-        <li>Opciones de pago: money order, cheque, tarjeta (G-1450)</li>
-        <li>Puedes solicitar exención de tarifas (Formulario I-912)</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 11 — I-485
-══════════════════════════════ -->
-<div class="slide" id="s11">
-  <div class="left">
-    <div class="tag">Clase 1 — Formulario Principal</div>
-    <div class="form-badge">I-485</div>
-    <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1.1;color:var(--white);">AJUSTE DE <span class="gold">ESTATUS</span></h2>
-    <div class="gold-bar"></div>
-    <p style="font-size:clamp(12px,1.4vw,16px);color:var(--beige);line-height:1.7;max-width:460px;">
-      El Formulario I-485 es la solicitud para ajustar tu estatus migratorio y convertirte en residente permanente (Green Card) <strong style="color:var(--gold);">sin salir de los Estados Unidos</strong>.
-    </p>
-    <div style="margin-top:20px;">
-      <a class="link-btn" href="https://www.uscis.gov/i-485" target="_blank" style="display:inline-flex;">📥 Descargar Formulario I-485</a>
-    </div>
-  </div>
-  <div class="right">
-    <div>
-      <h3>📁 Documentación necesaria</h3>
-      <ul>
-        <li>Formulario I-485 completamente llenado</li>
-        <li>Fotos de pasaporte (2 fotos)</li>
-        <li>Copia del pasaporte vigente</li>
-        <li>Formulario I-94 (historial de entrada)</li>
-        <li>Examen médico — Formulario I-693</li>
-      </ul>
-    </div>
-    <div>
-      <h3>✅ Pruebas de elegibilidad</h3>
-      <ul>
-        <li>Petición familiar aprobada (I-130)</li>
-        <li>Aprobación de asilo</li>
-        <li>Visa de diversidad (lotería)</li>
-        <li>Otra base de elegibilidad aplicable</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 12 — FORMULARIOS CLASE 2
-══════════════════════════════ -->
-<div class="slide" id="s12">
-  <div class="tag">Clase 2 — Día 2</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;">FORMULARIOS <span class="gold">ESENCIALES</span> DE INMIGRACIÓN</h2>
-  <div class="gold-bar"></div>
-  <div class="forms-grid">
-    <div class="form-card"><div class="fid">I-912</div><h4>Exención de Tarifas</h4><p>Solicita la exención del pago de las tarifas de USCIS si cumples con los requisitos de ingresos bajos.</p><div style="margin-top:10px;"><a class="link-btn" href="https://www.uscis.gov/i-912" target="_blank">↗ Descargar I-912</a></div></div>
-    <div class="form-card"><div class="fid">I-765</div><h4>Permiso de Trabajo</h4><p>Autorización de Empleo (EAD). Permite trabajar legalmente en los EE.UU. mientras tu caso está en proceso.</p><div style="margin-top:10px;"><a class="link-btn" href="https://www.uscis.gov/i-765" target="_blank">↗ Descargar I-765</a></div></div>
-    <div class="form-card"><div class="fid">G-1145</div><h4>Aviso Electrónico</h4><p>Solicita notificación electrónica (email/texto) cuando USCIS reciba tu paquete de documentos.</p><div style="margin-top:10px;"><a class="link-btn" href="https://www.uscis.gov/g-1145" target="_blank">↗ Descargar G-1145</a></div></div>
-    <div class="form-card"><div class="fid">G-1450</div><h4>Pago con Tarjeta</h4><p>Autoriza a USCIS a cobrar las tarifas directamente con tarjeta de crédito o débito.</p><div style="margin-top:10px;"><a class="link-btn" href="https://www.uscis.gov/g-1450" target="_blank">↗ Descargar G-1450</a></div></div>
-    <div class="form-card"><div class="fid">N-400</div><h4>Solicitud de Ciudadanía</h4><p>Solicitud de Naturalización para convertirse en ciudadano estadounidense. Requiere Green Card por 3–5 años.</p><div style="margin-top:10px;"><a class="link-btn" href="https://www.uscis.gov/n-400" target="_blank">↗ Descargar N-400</a></div></div>
-    <div class="form-card"><div class="fid">FD-258</div><h4>Récord Criminal</h4><p>Tarjeta de huellas dactilares requerida para la solicitud de antecedentes penales ante el FBI.</p><div style="margin-top:10px;"><a class="link-btn" href="https://www.fbi.gov" target="_blank">↗ FBI.GOV</a></div></div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 13 — I-130 / I-130A
-══════════════════════════════ -->
-<div class="slide" id="s13">
-  <div class="tag">Clase 2 — Peticiones Familiares</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;">PETICIONES FAMILIARES — <span class="gold">I-130</span> E <span class="gold">I-130A</span></h2>
-  <div class="gold-bar"></div>
-  <p style="font-size:clamp(11px,1.3vw,15px);color:var(--beige);margin-bottom:0;">Los formularios I-130 e I-130A son la base para reunificar familias a través del sistema de inmigración de los Estados Unidos.</p>
-  <div class="content">
-    <div class="panel">
-      <h3>📋 I-130 — Petition for Alien Relative</h3>
-      <p>Presentado por el ciudadano o residente permanente (el "peticionario"). Establece la relación familiar elegible:</p>
-      <ul style="list-style:none;margin-top:10px;">
-        <li class="check-row" style="margin-bottom:8px;"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Cónyuge</div></li>
-        <li class="check-row" style="margin-bottom:8px;"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Hijos solteros menores de 21 años</div></li>
-        <li class="check-row" style="margin-bottom:8px;"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Padres (si el peticionario es ciudadano mayor de 21)</div></li>
-        <li class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Hermanos (si el peticionario es ciudadano)</div></li>
-      </ul>
-      <div style="margin-top:14px;"><a class="link-btn" href="https://www.uscis.gov/i-130" target="_blank">↗ Descargar I-130</a></div>
-    </div>
-    <div class="panel">
-      <h3>📋 I-130A — Supplemental Information</h3>
-      <p>Información suplementaria del cónyuge beneficiario. Se presenta junto con el I-130 cuando el beneficiario es el cónyuge. Proporciona detalles adicionales sobre su historial migratorio y personal.</p>
-      <div style="margin-top:14px;"><a class="link-btn" href="https://www.uscis.gov/i-130a" target="_blank">↗ Descargar I-130A</a></div>
-    </div>
-    <div class="proofs">
-      <h3>📎 Pruebas requeridas</h3>
-      <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Acta de matrimonio o nacimiento (según relación)</div></div>
-      <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Evidencia de ciudadanía o residencia del peticionario</div></div>
-      <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Fotos de pasaporte de ambas partes</div></div>
-      <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Evidencia de relación genuina</div></div>
-      <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Fotos juntos, comunicaciones, cuentas conjuntas</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 14 — N-400 vs N-600
-══════════════════════════════ -->
-<div class="slide" id="s14">
-  <div class="tag">Clase 2 — Ciudadanía</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;"><span class="gold">N-400</span> — SOLICITUD DE NATURALIZACIÓN</h2>
-  <div class="gold-bar"></div>
-  <div class="compare">
-    <div class="cmp-col">
-      <div class="cmp-hdr"><h3>N-400</h3></div>
-      <div class="cmp-body">
-        <div class="cmp-sub">Solicitud de Naturalización — Ciudadanía</div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Solicitud activa para convertirse en ciudadano estadounidense por naturalización</div></div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Requiere ser residente permanente (Green Card) por 3 o 5 años</div></div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Implica examen de inglés, cívica y entrevista con oficial de USCIS</div></div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Culmina con la ceremonia de juramento de ciudadanía</div></div>
-        <div style="margin-top:16px;"><a class="link-btn" href="https://www.uscis.gov/n-400" target="_blank">↗ Descargar N-400</a></div>
-      </div>
-    </div>
-    <div class="cmp-col">
-      <div class="cmp-hdr"><h3>N-600</h3></div>
-      <div class="cmp-body">
-        <div class="cmp-sub">Certificado de Ciudadanía — No es naturalización</div>
-        <div class="check-row"><div class="dot dot-neg" style="width:18px;height:18px;font-size:10px;">✗</div><div class="txt">El N-600 NO es para naturalizarse</div></div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Para obtener un Certificado de Ciudadanía</div></div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Para personas que ya son ciudadanos por nacimiento en el extranjero de padres estadounidenses</div></div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">Para quienes derivaron ciudadanía automáticamente a través de sus padres</div></div>
-        <div class="check-row"><div class="dot" style="width:18px;height:18px;font-size:10px;">✓</div><div class="txt">No requiere examen ni ceremonia de juramento</div></div>
-        <div style="margin-top:16px;"><a class="link-btn" href="https://www.uscis.gov/n-600" target="_blank">↗ Descargar N-600</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 15 — DIRECTORIO
-══════════════════════════════ -->
-<div class="slide" id="s15">
-  <div class="tag">Referencia</div>
-  <h2 style="font-size:clamp(18px,3vw,38px);font-weight:900;text-transform:uppercase;line-height:1;">DIRECTORIO DE FORMULARIOS — <span class="gold">ACCESO RÁPIDO</span></h2>
-  <div class="gold-bar"></div>
-  <div class="dir">
-    <table class="ftable">
-      <thead><tr><th>Formulario</th><th>Descripción</th><th>Enlace</th></tr></thead>
-      <tbody>
-        <tr><td>I-485</td><td>Ajuste de Estatus</td><td style="color:var(--gold-lt);">uscis.gov/i-485</td></tr>
-        <tr><td>I-912</td><td>Exención de Tarifas</td><td style="color:var(--gold-lt);">uscis.gov/i-912</td></tr>
-        <tr><td>I-765</td><td>Permiso de Trabajo (EAD)</td><td style="color:var(--gold-lt);">uscis.gov/i-765</td></tr>
-        <tr><td>I-130</td><td>Petición Familiar</td><td style="color:var(--gold-lt);">uscis.gov/i-130</td></tr>
-        <tr><td>I-130A</td><td>Info suplementaria del cónyuge</td><td style="color:var(--gold-lt);">uscis.gov/i-130a</td></tr>
-        <tr><td>N-400</td><td>Solicitud de Naturalización</td><td style="color:var(--gold-lt);">uscis.gov/n-400</td></tr>
-        <tr><td>N-600</td><td>Certificado de Ciudadanía</td><td style="color:var(--gold-lt);">uscis.gov/n-600</td></tr>
-        <tr><td>G-1145</td><td>Aviso electrónico de recepción</td><td style="color:var(--gold-lt);">uscis.gov/g-1145</td></tr>
-        <tr><td>G-1450</td><td>Pago con tarjeta</td><td style="color:var(--gold-lt);">uscis.gov/g-1450</td></tr>
-        <tr><td>FD-258</td><td>Huellas — Récord Criminal</td><td style="color:var(--gold-lt);">fbi.gov</td></tr>
-      </tbody>
-    </table>
-    <div class="res">
-      <h3>Recursos clave</h3>
-      <div class="link-list">
-        <a class="link-btn" href="https://www.uscis.gov" target="_blank">🌐 USCIS.GOV</a>
-        <a class="link-btn" href="https://i94.cbp.dhs.gov/home" target="_blank">🛂 Portal I-94</a>
-        <a class="link-btn" href="https://acis.eoir.justice.gov/en" target="_blank">⚖️ Corte EOIR</a>
-        <a class="link-btn" href="https://www.uscis.gov/forms/filing-fees" target="_blank">💲 Tarifas USCIS</a>
-        <a class="link-btn" href="https://www.fbi.gov" target="_blank">🔍 FBI — Récord Criminal</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════
-     SLIDE 16 — CIERRE
-══════════════════════════════ -->
-<div class="slide" id="s16">
-  <div class="left">
-    <p class="cta">¡Tú puedes hacerlo.</p>
-    <p class="cta-sub">Nosotros te guiamos.</p>
-    <div class="gold-bar" style="margin:16px auto;"></div>
-    <div class="cupos-box">
-      <div class="cql">Solo hay disponible</div>
-      <div class="cqn">11</div>
-      <div class="cqs">Cupos</div>
-    </div>
-    <div class="closing-card">
-      <p class="closing-eyebrow">Instructora</p>
-      <p class="cn">TATIANA SERRATE</p>
-      <div style="height:1px;background:rgba(201,168,76,.3);margin:12px 0;"></div>
-      <p>📅 Julio 4 y 5 &nbsp;|&nbsp; 🕐 8:30 AM – 3:30 PM</p>
-      <p>💲 Inversión: $799.00 &nbsp;|&nbsp; 📍 Presencial</p>
-      <p class="closing-address">5870 Highway 6 N, Houston, TX 77084 Suite 314</p>
-    </div>
-  </div>
-  <div class="right">
-    <div class="promo-shell">
-      <div class="academy-eyebrow">TSG Services Academy</div>
-      <div style="color:var(--gold);font-size:clamp(22px,3.8vw,44px);font-weight:900;text-transform:uppercase;line-height:.9;margin-bottom:10px;">CURSO DE<br>INMIGRACIÓN</div>
-      <div class="academy-subtitle">Conoce tus opciones, toma el control de tu futuro</div>
-      <div style="background:var(--gold);border-radius:8px;padding:12px 20px;margin-bottom:14px;">
-        <div class="availability-eyebrow">Solo hay disponible</div>
-        <div style="font-size:clamp(28px,5vw,56px);font-weight:900;color:var(--black);line-height:1;">11 CUPOS</div>
-      </div>
-      <div style="border:1.5px solid var(--gold);border-radius:6px;padding:10px;margin-bottom:10px;">
-        <div class="coach-eyebrow">Instructora</div>
-        <div style="font-size:clamp(13px,1.8vw,20px);font-weight:800;color:#fff;">TATIANA SERRATE</div>
-      </div>
-      <div class="address-note">5870 Highway 6 N, Houston, TX 77084 Suite 314</div>
-    </div>
-  </div>
-</div>
-
-</div><!-- /deck -->
-
-<nav class="nav" role="group" aria-label="Navegación de diapositivas">
-  <button type="button" aria-label="Diapositiva anterior" onclick="go(-1)">&#8592;</button>
-  <span class="ctr" id="ctr" aria-live="polite">1 / 17</span>
-  <button type="button" id="fsBtn" aria-label="Entrar en pantalla completa">&#9974;</button>
-  <button type="button" aria-label="Diapositiva siguiente" onclick="go(1)">&#8594;</button>
-</nav>
-
-<div class="lightbox" id="lightbox" hidden aria-hidden="true">
-  <div class="lightbox-backdrop" data-close-preview></div>
-  <div class="lightbox-panel">
-    <button type="button" class="lightbox-nav desktop" id="lightboxPrev" aria-label="Flyer anterior">&#8592;</button>
-    <div class="lightbox-stage" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
-      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar vista ampliada">&#10005;</button>
-      <figure class="lightbox-figure">
-        <img class="lightbox-image" id="lightboxImage" alt="">
-        <figcaption class="lightbox-meta">
-          <div>
-            <strong id="lightboxTitle">Flyer promocional</strong>
-            <span>Vista ampliada del material promocional</span>
-          </div>
-          <div class="lightbox-count" id="lightboxCount">1 / 7</div>
-        </figcaption>
-      </figure>
-      <div class="lightbox-nav-row">
-        <button type="button" class="lightbox-nav" id="lightboxPrevMobile" aria-label="Flyer anterior">&#8592;</button>
-        <button type="button" class="lightbox-nav" id="lightboxNextMobile" aria-label="Flyer siguiente">&#8594;</button>
-      </div>
-    </div>
-    <button type="button" class="lightbox-nav desktop" id="lightboxNext" aria-label="Siguiente flyer">&#8594;</button>
-  </div>
-</div>
-
-<script>
-const baseTitle = 'TSG Services Academy — Curso de Inmigración';
-const slides = document.querySelectorAll('.slide');
-const ctr = document.getElementById('ctr');
-const deck = document.querySelector('.deck');
-const fsBtn = document.getElementById('fsBtn');
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-const lightboxTitle = document.getElementById('lightboxTitle');
-const lightboxCount = document.getElementById('lightboxCount');
-const lightboxClose = document.getElementById('lightboxClose');
-const lightboxPrev = document.getElementById('lightboxPrev');
-const lightboxNext = document.getElementById('lightboxNext');
-const lightboxPrevMobile = document.getElementById('lightboxPrevMobile');
-const lightboxNextMobile = document.getElementById('lightboxNextMobile');
-const previewTriggers = Array.from(document.querySelectorAll('[data-preview-src]'));
-let cur = 0;
-let touchStartX = 0;
-let touchStartY = 0;
-let previewIndex = -1;
-let previewReturnFocus = null;
-
-function slideTitle(slide, index) {
-  const title = slide.querySelector('h1, h2');
-  return title ? title.textContent.replace(/\s+/g, ' ').trim() : `Diapositiva ${index + 1}`;
-}
-
-function findSlideIndexById(id) {
-  return Array.from(slides).findIndex(slide => slide.id === id);
-}
-
-function getPreviewAlt(trigger) {
-  return trigger.querySelector('img')?.alt || trigger.dataset.previewTitle || 'Flyer promocional';
-}
-
-function getPreviewGroupItems(trigger) {
-  const group = trigger.dataset.previewGroup || 'default';
-  return previewTriggers.filter(item => (item.dataset.previewGroup || 'default') === group);
-}
-
-function syncPreview() {
-  const trigger = previewTriggers[previewIndex];
-  if (!trigger) return;
-  const groupItems = getPreviewGroupItems(trigger);
-  const groupPosition = groupItems.indexOf(trigger);
-  lightboxImage.src = trigger.dataset.previewSrc;
-  lightboxImage.alt = getPreviewAlt(trigger);
-  lightboxTitle.textContent = trigger.dataset.previewTitle || getPreviewAlt(trigger);
-  lightboxCount.textContent = `${groupPosition + 1} / ${groupItems.length}`;
-  const hasMultiple = groupItems.length > 1;
-  lightboxPrev.hidden = !hasMultiple;
-  lightboxNext.hidden = !hasMultiple;
-  lightboxPrevMobile.hidden = !hasMultiple;
-  lightboxNextMobile.hidden = !hasMultiple;
-}
-
-function openPreview(nextIndex) {
-  previewIndex = nextIndex;
-  previewReturnFocus = previewTriggers[nextIndex];
-  syncPreview();
-  lightbox.hidden = false;
-  lightbox.setAttribute('aria-hidden', 'false');
-  lightboxClose.focus({ preventScroll:true });
-}
-
-function closePreview() {
-  lightbox.hidden = true;
-  lightbox.setAttribute('aria-hidden', 'true');
-  lightboxImage.removeAttribute('src');
-  if (previewReturnFocus) previewReturnFocus.focus({ preventScroll:true });
-  previewIndex = -1;
-}
-
-function movePreview(step) {
-  const trigger = previewTriggers[previewIndex];
-  if (!trigger) return;
-  const groupItems = getPreviewGroupItems(trigger);
-  const currentGroupIndex = groupItems.indexOf(trigger);
-  const nextTrigger = groupItems[(currentGroupIndex + step + groupItems.length) % groupItems.length];
-  previewIndex = Number(nextTrigger.dataset.previewIndex);
-  syncPreview();
-}
-
-function syncDeckState(updateHash = true) {
-  ctr.textContent = (cur + 1) + ' / ' + slides.length;
-  document.title = `${baseTitle} — ${slideTitle(slides[cur], cur)}`;
-  if (!updateHash) return;
-  const nextHash = `#${slides[cur].id}`;
-  if (window.location.hash !== nextHash) {
-    history.replaceState(null, '', nextHash);
-  }
-}
-
-slides.forEach((slide, index) => {
-  slide.tabIndex = -1;
-  slide.setAttribute('role', 'region');
-  slide.setAttribute('aria-label', slideTitle(slide, index));
-  slide.setAttribute('aria-hidden', index === cur ? 'false' : 'true');
-});
-previewTriggers.forEach((trigger, index) => {
-  trigger.dataset.previewIndex = index;
-  trigger.setAttribute('aria-label', `${getPreviewAlt(trigger)} — ampliar vista`);
-  trigger.addEventListener('click', () => openPreview(index));
-});
-document.querySelectorAll('a[target="_blank"]').forEach(link => {
-  link.rel = 'noopener noreferrer';
-});
-function show(n, { updateHash = true, focus = true } = {}) {
-  slides[cur].classList.remove('active');
-  slides[cur].setAttribute('aria-hidden', 'true');
-  cur = ((n % slides.length) + slides.length) % slides.length;
-  slides[cur].classList.add('active');
-  slides[cur].setAttribute('aria-hidden', 'false');
-  syncDeckState(updateHash);
-  if (focus) slides[cur].focus({ preventScroll:true });
-}
-function go(d) { show(cur + d); }
-async function toggleFullscreen() {
-  try {
-    if (!document.fullscreenElement) {
-      await document.documentElement.requestFullscreen();
-    } else {
-      await document.exitFullscreen();
-    }
-  } catch (err) {
-    console.warn('No se pudo cambiar a pantalla completa.', err);
-  }
-}
-
-function syncFullscreenButton() {
-  const isFullscreen = Boolean(document.fullscreenElement);
-  fsBtn.setAttribute('aria-label', isFullscreen ? 'Salir de pantalla completa' : 'Entrar en pantalla completa');
-  fsBtn.innerHTML = isFullscreen ? '&#x2715;' : '&#9974;';
-}
-
-document.addEventListener('keydown', e => {
-  if (!lightbox.hidden) {
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      closePreview();
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      movePreview(1);
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      movePreview(-1);
-    }
-    return;
-  }
-  if (e.target.closest('a, button, input, textarea, select')) return;
-  if (e.key === 'ArrowRight' || e.code === 'Space') {
-    e.preventDefault();
-    go(1);
-  } else if (e.key === 'ArrowLeft') {
-    e.preventDefault();
-    go(-1);
-  } else if (e.key === 'Home') {
-    e.preventDefault();
-    show(0);
-  } else if (e.key === 'End') {
-    e.preventDefault();
-    show(slides.length - 1);
-  } else if (e.key.toLowerCase() === 'f') {
-    e.preventDefault();
-    toggleFullscreen();
-  }
-});
-
-deck.addEventListener('touchstart', e => {
-  if (e.target.closest('a, button, input, textarea, select')) return;
-  const touch = e.changedTouches[0];
-  touchStartX = touch.clientX;
-  touchStartY = touch.clientY;
-}, { passive:true });
-
-deck.addEventListener('touchend', e => {
-  if (e.target.closest('a, button, input, textarea, select')) return;
-  const touch = e.changedTouches[0];
-  const deltaX = touch.clientX - touchStartX;
-  const deltaY = touch.clientY - touchStartY;
-  if (Math.abs(deltaX) < 60 || Math.abs(deltaY) > 40) return;
-  if (deltaX < 0) go(1);
-  if (deltaX > 0) go(-1);
-}, { passive:true });
-
-window.addEventListener('hashchange', () => {
-  const slideId = window.location.hash.replace(/^#/, '');
-  const nextIndex = slideId ? findSlideIndexById(slideId) : 0;
-  if (nextIndex >= 0 && nextIndex !== cur) {
-    show(nextIndex, { updateHash:false });
-  }
-});
-document.addEventListener('fullscreenchange', syncFullscreenButton);
-fsBtn.addEventListener('click', toggleFullscreen);
-lightbox.addEventListener('click', e => {
-  if (e.target.hasAttribute('data-close-preview')) closePreview();
-});
-lightboxClose.addEventListener('click', closePreview);
-lightboxPrev.addEventListener('click', () => movePreview(-1));
-lightboxNext.addEventListener('click', () => movePreview(1));
-lightboxPrevMobile.addEventListener('click', () => movePreview(-1));
-lightboxNextMobile.addEventListener('click', () => movePreview(1));
-
-const initialSlideId = window.location.hash.replace(/^#/, '');
-const initialIndex = initialSlideId ? findSlideIndexById(initialSlideId) : 0;
-if (initialIndex > 0) {
-  show(initialIndex, { updateHash:false, focus:false });
-} else {
-  syncDeckState(Boolean(initialSlideId));
-}
-syncFullscreenButton();
-</script>
 </body>
 </html>

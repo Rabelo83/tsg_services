@@ -1,5 +1,7 @@
 # TSG Services Academy Presentation
 
+Para colaboradores humanos o IA, ver tambien `AGENTS.md` para el contexto rapido del proyecto.
+
 Presentacion estatica lista para GitHub Pages del curso presencial de inmigracion de TSG Services Academy.
 
 ## Estructura
